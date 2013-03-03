@@ -1,6 +1,9 @@
 from kivy.app import App
 from kivy.uix.widget import Widget
 from kivy.graphics import Color, Ellipse
+from math import sqrt
+
+buttons = []
 
 class Button:
     def __init__(self):
@@ -8,9 +11,11 @@ class Button:
         self.y = 0
         self.radious = 50
         self.state = False
-
+    
     def IsInButton(touch, self):
-        if abs(touch.x - self.x) < self.size and abs(touch);
+        if sqrt((touch.x - self.x)**2 + (touch.y - self.y)**2) < self.size:
+            return True
+        return False
 
 class LightsOffWidget(Widget):
     def on_touch_down(self, touch):
@@ -21,6 +26,16 @@ class LightsOffWidget(Widget):
 
 class LightsOffGame(App):
     def build(self):
+        for i in range(1, 6):
+            for j in ragne(1, 6):
+                tmp = Button()
+                tmp.x = i * 100
+                tmp.y = j * 100
+                buttons.append(tmp)
+        
+        for i in buttons:
+        
+
         return LightsOffWidget()        
 
 if (__name__ == '__main__'):
