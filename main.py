@@ -26,12 +26,19 @@ class LightsOff_InitScreen(Widget):
             Ellipse(pos = (i.x, i.y), size = (i.radious, i.radious)) '''
 
 class LightsOff_GameWidget(Widget):
-    def on_touch_down(self, touch):
-        with self.canvas:                           
+    def init(self):
+        canvas_1 = self.canvas
+        with canvas_1:
             Color(1, 1, 1)
             for i in buttons:
                 print 'drawn', i.x, i.y, i.radious
                 Ellipse(pos = (i.x, i.y), size = (i.radious, i.radious))
+        return self
+
+    def on_touch_down(self, touch):
+#        self.init()
+        canvas_2 = self.canvas
+        with canvas_2:
             Color(1, 1, 0)
             Ellipse(pos = (100, 100), size = (30, 30))
             print touch
@@ -47,7 +54,7 @@ class LightsOff_GameApp(App):
         #init = LightsOff_InitScreen()
         #init.draw_background()
 
-        return LightsOff_GameWidget()        
+        return LightsOff_GameWidget().init()        
 
 if (__name__ == '__main__'):
     LightsOff_GameApp().run() 
