@@ -16,14 +16,14 @@ class LightsOff_Button:
         if sqrt((touch.x - self.x)**2 + (touch.y - self.y)**2) < self.size:
             return True
         return False
-
+'''
 class LightsOff_InitScreen(Widget):
     def draw_background():
         print 'inastance made'        
         Color(1, 1, 1)
         for i in buttons:
             print 'drawn', i.x, i.y, i.radious
-            Ellipse(pos = (i.x, i.y), size = (i.radious, i.radious))
+            Ellipse(pos = (i.x, i.y), size = (i.radious, i.radious)) '''
 
 class LightsOff_GameWidget(Widget):
     def on_touch_down(self, touch):
@@ -41,8 +41,8 @@ class LightsOff_GameApp(App):
         for i in range(1, 6):
             for j in range(1, 6):
                 tmp = LightsOff_Button()
-                tmp.x = i * 100
-                tmp.y = j * 100
+                tmp.x = i * 50
+                tmp.y = j * 50
                 buttons.append(tmp)
         #init = LightsOff_InitScreen()
         #init.draw_background()
