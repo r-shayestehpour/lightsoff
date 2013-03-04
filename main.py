@@ -5,7 +5,7 @@ from math import sqrt
 
 buttons = []
 
-class Button:
+class LightsOff_Button:
     def __init__(self):
         self.x = 0
         self.y = 0
@@ -17,27 +17,37 @@ class Button:
             return True
         return False
 
-class LightsOffWidget(Widget):
+class LightsOff_InitScreen(Widget):
+    def draw_background():
+        print 'inastance made'        
+        Color(1, 1, 1)
+        for i in buttons:
+            print 'drawn', i.x, i.y, i.radious
+            Ellipse(pos = (i.x, i.y), size = (i.radious, i.radious))
+
+class LightsOff_GameWidget(Widget):
     def on_touch_down(self, touch):
-        with self.canvas:
+        with self.canvas:                           
+            Color(1, 1, 1)
+            for i in buttons:
+                print 'drawn', i.x, i.y, i.radious
+                Ellipse(pos = (i.x, i.y), size = (i.radious, i.radious))
             Color(1, 1, 0)
             Ellipse(pos = (100, 100), size = (30, 30))
             print touch
 
-class LightsOffGame(App):
+class LightsOff_GameApp(App):
     def build(self):
         for i in range(1, 6):
-            for j in ragne(1, 6):
-                tmp = Button()
+            for j in range(1, 6):
+                tmp = LightsOff_Button()
                 tmp.x = i * 100
                 tmp.y = j * 100
                 buttons.append(tmp)
-        
-        for i in buttons:
-        
+        #init = LightsOff_InitScreen()
+        #init.draw_background()
 
-        return LightsOffWidget()        
+        return LightsOff_GameWidget()        
 
 if (__name__ == '__main__'):
-    LightsOffGame().run()
-   
+    LightsOff_GameApp().run() 
